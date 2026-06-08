@@ -1,0 +1,43 @@
+services:
+
+  postgres:
+    image: postgres:16
+
+    container_name: postgres-db
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+
+    container_name: redis
+
+    ports:
+      - "6379:6379"
+
+  api:
+    build: .
+
+    container_name: learning-platform-api
+
+    env_file:
+      - .env
+
+    ports:
+      - "3000:3000"
+
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  postgres-data:
