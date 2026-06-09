@@ -12,7 +12,7 @@ A backend learning project built with NestJS.
 * Background Jobs with BullMQ
 * Logging & Monitoring
 * Unit & E2E Testing
-* Docker & Docker Compose
+* Docker basics & Docker Compose
 
 ## Tech Stack
 
